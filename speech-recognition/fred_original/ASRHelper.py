@@ -1,11 +1,7 @@
-#made by frederic seraphine 30/3/2023
-#modified (recording feature) by kenta 30/3/2023
-
 import io
 import speech_recognition as sr
 import whisper
 import torch
-import shutil
 
 from datetime import datetime, timedelta
 from queue import Queue
@@ -78,14 +74,11 @@ def transcribe_asr(model="medium", non_english=False, energy_threshold=1000,
 
                 if phrase_complete:
                     transcription.append(text)
-                    now = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-                    filename = f"data/answer_{now}.wav"
-                    shutil.copy(temp_file, filename)
                     try:
                         language = detect(text)
                     except LangDetectException:
                         language = 'unknown'
-                    yield text, language, filename, now
+                    yield text, language
 
                 sleep(0.25)
     except KeyboardInterrupt:
