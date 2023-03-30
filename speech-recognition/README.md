@@ -38,6 +38,8 @@ I tested following environment, but you may be able to set up your computer.
 This script has a some options like:
 `python hello_multilingual.py --model small --oscipaddress 10.216.199.146 --oscport 6912`
 
+Default model is "tiny", IP address is "localhost", port is 6140.
+
 When you run this script on laptop or PC which doesn't have GPU, I recommend to run with option
 `--model tiny`
 If you have good GPU, using medium or large models are good option.
