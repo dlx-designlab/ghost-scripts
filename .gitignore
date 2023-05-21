@@ -130,3 +130,6 @@ dmypy.json
 image-processing/.DS_Store
 speech-recognition/.DS_Store
 .DS_Store
+
+# Project Confing and files storing API keys
+wake-words-recognition/config.py
