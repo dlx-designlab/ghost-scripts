@@ -1,6 +1,9 @@
 import socket
 
-UDP_IP_ADDRESS = "127.0.0.1"
+# get my ip address
+print(f"Server IP: {socket.gethostbyname(socket.gethostname())}")
+
+UDP_IP_ADDRESS = "192.168.28.224"
 UDP_PORT_NO = 8888
 
 serverMsg = "Hello, Client, Got it!"
@@ -13,10 +16,12 @@ serverSock.bind((UDP_IP_ADDRESS, UDP_PORT_NO))
 
 # Run the server forever
 print(f"Ghost UDP server up and listening on port {UDP_PORT_NO}")
+data_points = []
 while True:
-    data, addr = serverSock.recvfrom(1024)
+    data, addr = serverSock.recvfrom(1000000)
     print (f"Message: {data}")
+    # data_points.append(data)
+    # print(len(data_points))
     
     # Send a reply to client
     serverSock.sendto(serverMsgBytes, addr)
-

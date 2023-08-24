@@ -11,17 +11,18 @@ def print_handler(address, *args):
     global st
 
     # start timer to measure time to process 20000 datapoints
-    if dp_counter == 0:
-        st = time.time()
+    # if dp_counter == 0:
+    #     st = time.time()
     
     dp_counter += 1
-    print(f"{address}: {args}")
+    print(f"{dp_counter}: {address}: {args}")
+    # print(f"{dp_counter} len: {len(args)}")
 
-    # Stopo timer and print time to process 20000 datapoints
-    if dp_counter >= 20000:
-        et = time.time()
-        print(f"done in {et - st} seconds")
-        dp_counter = 0
+    # Stop timer and print time to process 20000 datapoints
+    # if dp_counter >= 20000:
+    #     et = time.time()
+    #     print(f"done in {et - st} seconds")
+    #     dp_counter = 0
 
 
 def default_handler(address, *args):
@@ -33,7 +34,7 @@ dispatcher.map("/ghost/*", print_handler)
 dispatcher.set_default_handler(default_handler)
 
 ip = "127.0.0.1"
-port = 1337
+port = 8000
 
 print(f"OSC Server Listening on {ip}:{port}")
 server = BlockingOSCUDPServer((ip, port), dispatcher)

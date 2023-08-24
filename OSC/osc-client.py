@@ -2,9 +2,13 @@ from pythonosc.udp_client import SimpleUDPClient
 import random
 import time
 
+# import sys
+# dp = bool(random.getrandbits(1)) #random.uniform(-1, 1)
+# print(sys.getsizeof(dp))
+
 
 ip = "127.0.0.1"
-port = 1337
+port = 8000
 datapoints = 20000
 dp = 0.0
 
@@ -12,10 +16,12 @@ print(f"Sending {datapoints} datapoints to {ip}:{port}")
 client = SimpleUDPClient(ip, port)  # Create client
 
 st = time.time()
+data = []
 for i in range(datapoints):
-    dp = random.uniform(-1, 1)
+    dp = bool(random.getrandbits(1)) #random.uniform(-1, 1)
+    data.append(dp)
     client.send_message("/ghost/neurons", dp)   # Send float message
-    # print(i)
+    # print(f"{i}: {dp}")
 
 et = time.time()
 
