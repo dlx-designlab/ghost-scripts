@@ -1,3 +1,4 @@
+//306
 import processing.video.*;
 
 Movie myMovie;
@@ -15,7 +16,7 @@ int[][] electrodesCropCoordinates = {
 };
 
 void setup() {
-  size(900, 900);
+  size(1800, 900);
   background(20);
   myMovie = new Movie(this, "test_vid.mp4");
   myMovie.loop(); // Start playing the video
@@ -46,7 +47,7 @@ void draw() {
     noStroke();
     rect(cropSize, i * cropSize, cropSize, cropSize); 
     
-    rect(cropSize/5 * frameCount, 750 + i * cropSize/5, cropSize/5, cropSize/5); 
+    rect(cropSize/10 * frameCount, 750 + i * cropSize/5, cropSize/10, cropSize/5); 
   }
 
   
